@@ -60,12 +60,12 @@ jobs:
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
       with:
-        registry: ${REGISTRY}
+        registry: ${{ env.REGISTRY }}
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build the Docker image
-      run: docker build -t ${REGISTRY}/${CONTAINER_IMAGE_NAME}:${{ github.sha }} .
+      run: docker build -t ${{ env.REGISTRY }}/${CONTAINER_IMAGE_NAME}:${{ github.sha }} .
 
     - name: Push the Docker image
-      run: docker push ${REGISTRY}/${CONTAINER_IMAGE_NAME}:${{ github.sha }}
+      run: docker push ${{ env.REGISTRY }}/${CONTAINER_IMAGE_NAME}:${{ github.sha }}
