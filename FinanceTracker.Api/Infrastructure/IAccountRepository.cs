@@ -1,4 +1,6 @@
-﻿namespace FinanceTracker.Infrastructure.FinanceTracker.Model;
+﻿using FinanceTracker.Api.Model.Database;
+
+namespace FinanceTracker.Api.Infrastructure;
 
 public interface IAccountRepository
 {

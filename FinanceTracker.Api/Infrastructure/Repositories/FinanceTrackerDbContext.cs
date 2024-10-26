@@ -1,4 +1,4 @@
-﻿using FinanceTracker.Infrastructure;
+﻿using FinanceTracker.Api.Model.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinanceTracker.Api.Infrastructure.Repositories;

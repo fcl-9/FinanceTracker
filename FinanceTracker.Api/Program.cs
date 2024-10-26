@@ -2,8 +2,8 @@ using FinanceTracker.Api.Infrastructure;
 using FinanceTracker.Api.Infrastructure.Repositories;
 using FinanceTracker.Api.Mapper;
 using FinanceTracker.Api.Model;
-using FinanceTracker.Controllers;
-using FinanceTracker.Infrastructure.FinanceTracker.Model;
+using FinanceTracker.Api.Model.Requests;
+using FinanceTracker.Api.Validators;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 

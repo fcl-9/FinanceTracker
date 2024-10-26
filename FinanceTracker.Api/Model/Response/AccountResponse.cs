@@ -1,4 +1,4 @@
-﻿namespace FinanceTracker.Api.Mapper;
+﻿namespace FinanceTracker.Api.Model.Response;
 
 public class AccountResponse
 {

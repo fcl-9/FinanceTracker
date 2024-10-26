@@ -1,14 +1,13 @@
-using System.Runtime.Versioning;
 using AutoMapper;
-using FinanceTracker.Api;
+using FinanceTracker.Api.Infrastructure;
 using FinanceTracker.Api.Model;
+using FinanceTracker.Api.Model.Database;
+using FinanceTracker.Api.Model.Requests;
 using FinanceTracker.Api.Model.Response;
-using FinanceTracker.Infrastructure;
-using FinanceTracker.Infrastructure.FinanceTracker.Model;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FinanceTracker.Controllers;
+namespace FinanceTracker.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
@@ -44,7 +43,7 @@ public class InvestmentController : ControllerBase
         return Created(nameof(GetInvestment), responseModel);
     }
 
-    [HttpPost("GetInvestment")]
+    [HttpGet("GetInvestment")]
     public async Task<IActionResult> GetInvestment(Guid investmentId)
     {
         if (investmentId == Guid.Empty)

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using FinanceTracker.Api.Model;
-using FinanceTracker.Infrastructure;
+using FinanceTracker.Api.Model.Database;
+using FinanceTracker.Api.Model.Requests;
+using FinanceTracker.Api.Model.Response;
 
 namespace FinanceTracker.Api.Mapper;
 

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace FinanceTracker.Api.Model;
+﻿namespace FinanceTracker.Api.Model.Requests;
 
 public class AccountRequest
 {

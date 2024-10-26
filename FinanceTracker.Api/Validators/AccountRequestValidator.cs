@@ -1,7 +1,7 @@
-﻿using FinanceTracker.Api.Model;
+﻿using FinanceTracker.Api.Model.Requests;
 using FluentValidation;
 
-namespace FinanceTracker.Controllers;
+namespace FinanceTracker.Api.Validators;
 
 public class AccountRequestValidator : AbstractValidator<AccountRequest>
 {

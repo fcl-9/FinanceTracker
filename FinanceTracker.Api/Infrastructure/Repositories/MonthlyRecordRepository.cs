@@ -1,8 +1,6 @@
-﻿using FinanceTracker.Api.Infrastructure.Repositories;
-using FinanceTracker.Infrastructure;
-using FinanceTracker.Infrastructure.FinanceTracker.Model;
+﻿using FinanceTracker.Api.Model.Database;
 
-namespace FinanceTracker.Api.Infrastructure;
+namespace FinanceTracker.Api.Infrastructure.Repositories;
 
 public class MonthlyRecordRepository : IMonthlyRecordRepository
 {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FinanceTracker.Infrastructure;
+namespace FinanceTracker.Api.Model.Database;
 
 public class Account
 {

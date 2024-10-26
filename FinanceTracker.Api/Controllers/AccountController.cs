@@ -1,8 +1,10 @@
 using AutoMapper;
+using FinanceTracker.Api.Infrastructure;
 using FinanceTracker.Api.Mapper;
 using FinanceTracker.Api.Model;
-using FinanceTracker.Infrastructure;
-using FinanceTracker.Infrastructure.FinanceTracker.Model;
+using FinanceTracker.Api.Model.Database;
+using FinanceTracker.Api.Model.Requests;
+using FinanceTracker.Api.Model.Response;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
