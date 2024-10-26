@@ -10,7 +10,7 @@ public class InvestmentProfile : Profile
 {
     public InvestmentProfile()
     {
-        CreateMap<MonthlyRecordRequest, MonthlyRecord>();
+        CreateMap<InvestmentRecordRequest, MonthlyRecord>();
         CreateMap<MonthlyRecord, InvestmentResponse>();
     }
 }

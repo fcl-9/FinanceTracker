@@ -2,7 +2,7 @@
 
 namespace FinanceTracker.Api.Infrastructure;
 
-public interface IMonthlyRecordRepository
+public interface IInvestmentRepository
 {
     Task<MonthlyRecord> GetByIdAsync(Guid id);
     // Task<IEnumerable<MonthlyRecord>> GetAllAsync();

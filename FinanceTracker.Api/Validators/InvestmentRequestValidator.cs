@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace FinanceTracker.Api.Validators;
 
-public class InvestmentRequestValidator : AbstractValidator<MonthlyRecordRequest>
+public class InvestmentRequestValidator : AbstractValidator<InvestmentRecordRequest>
 {
     public InvestmentRequestValidator()
     {

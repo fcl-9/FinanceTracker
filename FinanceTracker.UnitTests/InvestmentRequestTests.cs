@@ -12,7 +12,7 @@ namespace FinanceTracker.UnitTests
         [Fact]
         public void Should_Have_Error_When_Month_Is_Invalid()
         {
-            var requestWithInvalidMonth = new MonthlyRecordRequest { Month = 13 }; // Invalid month
+            var requestWithInvalidMonth = new InvestmentRecordRequest { Month = 13 }; // Invalid month
 
             var result = _validator.TestValidate(requestWithInvalidMonth);
             result.ShouldHaveValidationErrorFor(x => x.Month)
@@ -22,7 +22,7 @@ namespace FinanceTracker.UnitTests
         [Fact]
         public void Should_Have_Error_When_Month_Is_Empty()
         {
-            var requestWithEmptyMonth = new MonthlyRecordRequest { Month = 0 }; // Empty month (invalid)
+            var requestWithEmptyMonth = new InvestmentRecordRequest { Month = 0 }; // Empty month (invalid)
 
             var result = _validator.TestValidate(requestWithEmptyMonth);
             result.ShouldHaveValidationErrorFor(x => x.Month)
@@ -32,7 +32,7 @@ namespace FinanceTracker.UnitTests
         [Fact]
         public void Should_Have_Error_When_Year_Is_Invalid()
         {
-            var requestWithInvalidYear = new MonthlyRecordRequest { Year = 1989 }; // Invalid year (too low)
+            var requestWithInvalidYear = new InvestmentRecordRequest { Year = 1989 }; // Invalid year (too low)
 
             var result = _validator.TestValidate(requestWithInvalidYear);
             result.ShouldHaveValidationErrorFor(x => x.Year)
@@ -42,7 +42,7 @@ namespace FinanceTracker.UnitTests
         [Fact]
         public void Should_Have_Error_When_Year_Is_Future()
         {
-            var requestWithFutureYear = new MonthlyRecordRequest { Year = DateTime.Now.Year + 1 }; // Future year (invalid)
+            var requestWithFutureYear = new InvestmentRecordRequest { Year = DateTime.Now.Year + 1 }; // Future year (invalid)
 
             var result = _validator.TestValidate(requestWithFutureYear);
             result.ShouldHaveValidationErrorFor(x => x.Year)
@@ -52,7 +52,7 @@ namespace FinanceTracker.UnitTests
         [Fact]
         public void Should_Have_Error_When_Value_Is_Negative()
         {
-            var requestWithNegativeValue = new MonthlyRecordRequest { Value = -100.00m }; // Negative value
+            var requestWithNegativeValue = new InvestmentRecordRequest { Value = -100.00m }; // Negative value
 
             var result = _validator.TestValidate(requestWithNegativeValue);
             result.ShouldHaveValidationErrorFor(x => x.Value)
@@ -62,7 +62,7 @@ namespace FinanceTracker.UnitTests
         [Fact]
         public void Should_Not_Have_Error_When_Valid_Month_Year_And_Value()
         {
-            var validRequest = new MonthlyRecordRequest
+            var validRequest = new InvestmentRecordRequest
             {
                 Month = 5,
                 Year = DateTime.Now.Year,
@@ -77,7 +77,7 @@ namespace FinanceTracker.UnitTests
         [Fact]
         public void Should_Have_Error_When_AccountId_Is_Empty()
         {
-            var validRequest = new MonthlyRecordRequest
+            var validRequest = new InvestmentRecordRequest
             {
                 Month = 5,
                 Year = DateTime.Now.Year,

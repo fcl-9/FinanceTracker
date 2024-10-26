@@ -2,11 +2,11 @@
 
 namespace FinanceTracker.Api.Infrastructure.Repositories;
 
-public class MonthlyRecordRepository : IMonthlyRecordRepository
+public class InvestmentRepository : IInvestmentRepository
 {
     private readonly FinanceTrackerDbContext _context;
 
-    public MonthlyRecordRepository(FinanceTrackerDbContext context)
+    public InvestmentRepository(FinanceTrackerDbContext context)
     {
         _context = context;
     }

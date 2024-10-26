@@ -14,30 +14,30 @@ namespace FinanceTracker.Api.Controllers;
 public class InvestmentController : ControllerBase
 {
     private readonly ILogger<InvestmentController> _logger;
-    private readonly IValidator<MonthlyRecordRequest> _monthlyRequestValidator;
-    private readonly IMonthlyRecordRepository _monthRepository;
+    private readonly IValidator<InvestmentRecordRequest> _investmentRequestValidator;
+    private readonly IInvestmentRepository _investmentRepository;
     private readonly IMapper _mapper;
 
     public InvestmentController(ILogger<InvestmentController> logger,
-        IValidator<MonthlyRecordRequest> monthlyRequestValidator,
-        IMonthlyRecordRepository monthRepository, IMapper mapper)
+        IValidator<InvestmentRecordRequest> investmentRequestValidator,
+        IInvestmentRepository investmentRepository, IMapper mapper)
     {
         _logger = logger;
-        _monthlyRequestValidator = monthlyRequestValidator;
-        _monthRepository = monthRepository;
+        _investmentRequestValidator = investmentRequestValidator;
+        _investmentRepository = investmentRepository;
         _mapper = mapper;
     }
 
     [HttpPost("CreateInvestment")]
-    public async Task<IActionResult> CreateInvestment([FromBody] MonthlyRecordRequest monthlyRecordRequest)
+    public async Task<IActionResult> CreateInvestment([FromBody] InvestmentRecordRequest investmentRecordRequest)
     {
-        var validationResult = _monthlyRequestValidator.Validate(monthlyRecordRequest);
+        var validationResult = _investmentRequestValidator.Validate(investmentRecordRequest);
         if (!validationResult.IsValid)
         {
             return BadRequest(validationResult.Errors);
         }
-        var dbModel = _mapper.Map<MonthlyRecord>(monthlyRecordRequest);
-        await _monthRepository.AddAsync(dbModel);
+        var dbModel = _mapper.Map<MonthlyRecord>(investmentRecordRequest);
+        await _investmentRepository.AddAsync(dbModel);
 
         var responseModel = _mapper.Map<InvestmentResponse>(dbModel);
         return Created(nameof(GetInvestment), responseModel);
@@ -50,7 +50,7 @@ public class InvestmentController : ControllerBase
         {
             return BadRequest("InvestmentId cannot be null or empty.");
         }
-        var dbModel = await _monthRepository.GetByIdAsync(investmentId);
+        var dbModel = await _investmentRepository.GetByIdAsync(investmentId);
         var responseModel = _mapper.Map<InvestmentResponse>(dbModel);
         return Ok(responseModel);
     }

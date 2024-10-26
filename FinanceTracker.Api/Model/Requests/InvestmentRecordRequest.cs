@@ -1,6 +1,6 @@
 ﻿namespace FinanceTracker.Api.Model.Requests;
 
-public class MonthlyRecordRequest
+public class InvestmentRecordRequest
 {
     public Guid InvestmentId { get; set; }
     public int Month { get; set; }
