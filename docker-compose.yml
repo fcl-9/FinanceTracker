@@ -1,6 +1,18 @@
 ﻿services:
-  financetracker:
-    image: financetracker
+  redis:
+    image: redis:latest
+    container_name: my-redis
+    ports:
+      - "6379:6379"
+  api:
+    image: finance-tracker-api
     build:
       context: .
       dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    depends_on:
+     - redis
+#    environment:
+#      - ConnectionStrings__DefaultConnection="Data Source=financeTracker.db"
