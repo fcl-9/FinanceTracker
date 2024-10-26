@@ -1,4 +1,5 @@
-﻿using FinanceTracker.Infrastructure;
+﻿using System.ComponentModel.DataAnnotations;
+using FinanceTracker.Infrastructure;
 
 namespace FinanceTracker.Api.Model;
 

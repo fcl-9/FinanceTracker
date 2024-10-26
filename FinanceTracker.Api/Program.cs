@@ -1,5 +1,6 @@
 using FinanceTracker.Api.Infrastructure;
 using FinanceTracker.Api.Infrastructure.Repositories;
+using FinanceTracker.Api.Mapper;
 using FinanceTracker.Api.Model;
 using FinanceTracker.Controllers;
 using FinanceTracker.Infrastructure.FinanceTracker.Model;
@@ -16,6 +17,8 @@ builder.Services.AddScoped<IValidator<MonthlyRecordRequest>, InvestmentRequestVa
 // Add SQLite connection
 builder.Services.AddDbContext<FinanceTrackerDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddAutoMapper(typeof(AccountProfile), typeof(InvestmentProfile));
 
 // Register repositories
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();

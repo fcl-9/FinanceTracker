@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace FinanceTracker.Api.Mapper;
 
-namespace FinanceTracker.Api.Model;
-
-public class AccountRequest
+public class AccountResponse
 {
     public Guid AccountId { get; set; }
     public string? AccountName { get; set; }

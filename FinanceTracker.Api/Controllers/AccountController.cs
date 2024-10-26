@@ -1,3 +1,5 @@
+using AutoMapper;
+using FinanceTracker.Api.Mapper;
 using FinanceTracker.Api.Model;
 using FinanceTracker.Infrastructure;
 using FinanceTracker.Infrastructure.FinanceTracker.Model;
@@ -13,12 +15,14 @@ public class AccountController : ControllerBase
     private readonly ILogger<AccountController> _logger;
     private readonly IValidator<AccountRequest> _accountRequestValidator;
     private readonly IAccountRepository _accountRepository;
+    private readonly IMapper _mapper;
 
-    public AccountController(ILogger<AccountController> logger, IValidator<AccountRequest> accountRequestValidator, IAccountRepository accountRepository)
+    public AccountController(ILogger<AccountController> logger, IValidator<AccountRequest> accountRequestValidator, IAccountRepository accountRepository, IMapper mapper)
     {
         _logger = logger;
         _accountRequestValidator = accountRequestValidator;
         _accountRepository = accountRepository;
+        _mapper = mapper;
     }
 
     [HttpPost("CreateAccount")]
@@ -29,16 +33,12 @@ public class AccountController : ControllerBase
         {
             return BadRequest(validationResult.Errors);
         }
-        //todo: map to db model automapper
-        var dbModel = new Account()
-        {
-            AccountId = accountRequest.AccountId,
-            AccountName = accountRequest.AccountName!,
-            AccountProvider = accountRequest.AccountProvider!,
-            AccountType = accountRequest.AccountType!
-        };
+
+        var dbModel = _mapper.Map<Account>(accountRequest);
         await _accountRepository.AddAsync(dbModel);
-        return Created(nameof(GetAccount), dbModel);
+
+        var responseModel = _mapper.Map<AccountResponse>(dbModel);
+        return Created(nameof(GetAccount), responseModel);
     }
 
     [HttpGet("GetAccount")]
@@ -49,7 +49,7 @@ public class AccountController : ControllerBase
             return BadRequest("AccountId cannot be null or empty.");
         }
         var account = await _accountRepository.GetByIdAsync(accountId);
-        //TODO: map to response model
-        return Ok(account);
+        var responseModel = _mapper.Map<AccountResponse>(account);
+        return Ok(responseModel);
     }
 }
