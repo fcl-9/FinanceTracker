@@ -1,4 +1,5 @@
-using FinanceTracker.Model;
+using FinanceTracker.Api.Model;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinanceTracker.Controllers;
@@ -13,10 +14,14 @@ public class WeatherForecastController : ControllerBase
     };
 
     private readonly ILogger<WeatherForecastController> _logger;
+    private readonly IValidator<AccountRequest> _accountRequestValidator;
+    private readonly IValidator<MonthlyRecordRequest> _monthlyRequestValidator;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public WeatherForecastController(ILogger<WeatherForecastController> logger, IValidator<AccountRequest> accountRequestValidator, IValidator<MonthlyRecordRequest> monthlyRequestValidator)
     {
         _logger = logger;
+        _accountRequestValidator = accountRequestValidator;
+        _monthlyRequestValidator = monthlyRequestValidator;
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
@@ -32,14 +37,25 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpPost("CreateAccount")]
-    public Task CreateAccount([FromBody] AccountRequest accountRequest)
+    public IActionResult CreateAccount([FromBody] AccountRequest accountRequest)
     {
+        var validationResult = _accountRequestValidator.Validate(accountRequest);
+        if (!validationResult.IsValid)
+        {
+            return BadRequest(validationResult.Errors);
+        }
+        
         throw new NotImplementedException();
     }
     
     [HttpPost("CreateInvestment")]
-    public Task CreateInvestment([FromBody] MonthlyRecordRequest monthlyRecordRequest)
+    public IActionResult CreateInvestment([FromBody] MonthlyRecordRequest monthlyRecordRequest)
     {
+        var validationResult = _monthlyRequestValidator.Validate(monthlyRecordRequest);
+        if (!validationResult.IsValid)
+        {
+            return BadRequest(validationResult.Errors);
+        }
         throw new NotImplementedException();
     }
 }

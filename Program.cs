@@ -1,6 +1,13 @@
+using FinanceTracker.Api.Model;
+using FinanceTracker.Controllers;
+using FluentValidation;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddScoped<IValidator<AccountRequest>, AccountRequestValidator>();
+builder.Services.AddScoped<IValidator<MonthlyRecordRequest>, InvestmentRequestValidator>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -1,4 +1,4 @@
-﻿using FinanceTracker.Model;
+﻿using FinanceTracker.Api.Model;
 using FluentValidation;
 
 namespace FinanceTracker.Controllers;
