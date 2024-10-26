@@ -1,6 +1,0 @@
-﻿services:
-  financetracker:
-    image: financetracker
-    build:
-      context: .
-      dockerfile: Dockerfile
