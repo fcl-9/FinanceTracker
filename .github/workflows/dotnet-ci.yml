@@ -16,6 +16,9 @@ permissions:
   contents: write
   pull-requests: write
   
+env:
+  CONTAINER_IMAGE_NAME: "finance-tracker-api"
+  
 jobs:
   build:
 
@@ -37,7 +40,9 @@ jobs:
     - name: Format
       run: dotnet format --verify-no-changes
 
-        
+    - name: Run Package Vulnerabiltiy Scan
+      run: dotnet list package --vulnerable
+      
     - name: Run tests
       run: dotnet test --configuration Release --no-build --logger "trx;LogFileName=test-results.trx"
         
@@ -54,11 +59,12 @@ jobs:
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
       with:
+        registry: ghcr.io/${{ github.repository }}
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build the Docker image
-      run: docker build -t ghcr.io/${{ github.repository }}/finance-tracker-api:${{ github.sha }} .
+      run: docker build -t ghcr.io/${{ github.repository }}/${CONTAINER_IMAGE_NAME}:${{ github.sha }} .
 
     - name: Push the Docker image
-      run: docker push ghcr.io/${{ github.repository }}/finance-tracker-api:${{ github.sha }}
+      run: docker push ghcr.io/${{ github.repository }}/${CONTAINER_IMAGE_NAME}:${{ github.sha }}
