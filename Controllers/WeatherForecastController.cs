@@ -1,3 +1,4 @@
+using FinanceTracker.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinanceTracker.Controllers;
@@ -28,5 +29,17 @@ public class WeatherForecastController : ControllerBase
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+    }
+
+    [HttpPost("CreateAccount")]
+    public Task CreateAccount([FromBody] AccountRequest accountRequest)
+    {
+        throw new NotImplementedException();
+    }
+    
+    [HttpPost("CreateInvestment")]
+    public Task CreateInvestment([FromBody] MonthlyRecordRequest monthlyRecordRequest)
+    {
+        throw new NotImplementedException();
     }
 }
