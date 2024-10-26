@@ -29,9 +29,17 @@ jobs:
 
     - name: Format
       run: dotnet format --verify-no-changes
-    
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+
+        
+    - name: Run tests
+      run: dotnet test --configuration Release --no-build --logger "trx;LogFileName=test-results.trx"
+        
+    - name: Unit Tests Report
+      uses: dorny/test-reporter@v1
+      with:
+        name: unitTests                  
+        path: 'tests/**/TestResults/*.trx'
+        reporter: dotnet-trx      
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
