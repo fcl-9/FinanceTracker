@@ -13,10 +13,10 @@ public class MonthlyRecordRepository : IMonthlyRecordRepository
         _context = context;
     }
 
-    // public async Task<MonthlyRecord> GetByIdAsync(int id)
-    // {
-    //     return await _context.MonthlyRecords.FindAsync(id);
-    // }
+    public async Task<MonthlyRecord> GetByIdAsync(Guid id)
+    {
+        return await _context.MonthlyRecords.FindAsync(id);
+    }
     //
     // public async Task<IEnumerable<MonthlyRecord>> GetAllAsync()
     // {

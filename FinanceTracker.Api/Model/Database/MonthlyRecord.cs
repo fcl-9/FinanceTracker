@@ -5,7 +5,7 @@ namespace FinanceTracker.Infrastructure;
 public class MonthlyRecord
 {
     [Key]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     [Required]
     public int Month { get; set; }

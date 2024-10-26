@@ -1,6 +1,8 @@
 using FinanceTracker.Api.Model;
-using FluentValidation.TestHelper;
 using FinanceTracker.Controllers;
+using FluentValidation.TestHelper;
+
+namespace FinanceTracker.UnitTests;
 
 public class AccountRequestValidatorTests
 {
@@ -13,7 +15,7 @@ public class AccountRequestValidatorTests
 
         var result = _validator.TestValidate(model);
         result.ShouldHaveValidationErrorFor(acc => acc.AccountId)
-              .WithErrorMessage("AccountId cannot be null or empty.");
+            .WithErrorMessage("AccountId cannot be null or empty.");
     }
 
     [Fact]
@@ -24,11 +26,11 @@ public class AccountRequestValidatorTests
 
         var resultNull = _validator.TestValidate(modelWithNullName);
         resultNull.ShouldHaveValidationErrorFor(acc => acc.AccountName)
-                  .WithErrorMessage("AccountName cannot be null or empty.");
+            .WithErrorMessage("AccountName cannot be null or empty.");
 
         var resultEmpty = _validator.TestValidate(modelWithEmptyName);
         resultEmpty.ShouldHaveValidationErrorFor(acc => acc.AccountName)
-                   .WithErrorMessage("AccountName cannot be null or empty.");
+            .WithErrorMessage("AccountName cannot be null or empty.");
     }
 
     [Fact]
@@ -39,11 +41,11 @@ public class AccountRequestValidatorTests
 
         var resultNull = _validator.TestValidate(modelWithNullProvider);
         resultNull.ShouldHaveValidationErrorFor(acc => acc.AccountProvider)
-                  .WithErrorMessage("AccountProvider cannot be null or empty.");
+            .WithErrorMessage("AccountProvider cannot be null or empty.");
 
         var resultEmpty = _validator.TestValidate(modelWithEmptyProvider);
         resultEmpty.ShouldHaveValidationErrorFor(acc => acc.AccountProvider)
-                   .WithErrorMessage("AccountProvider cannot be null or empty.");
+            .WithErrorMessage("AccountProvider cannot be null or empty.");
     }
 
     [Fact]
@@ -54,11 +56,11 @@ public class AccountRequestValidatorTests
 
         var resultNull = _validator.TestValidate(modelWithNullType);
         resultNull.ShouldHaveValidationErrorFor(acc => acc.AccountType)
-                  .WithErrorMessage("AccountType cannot be null or empty.");
+            .WithErrorMessage("AccountType cannot be null or empty.");
 
         var resultEmpty = _validator.TestValidate(modelWithEmptyType);
         resultEmpty.ShouldHaveValidationErrorFor(acc => acc.AccountType)
-                   .WithErrorMessage("AccountType cannot be null or empty.");
+            .WithErrorMessage("AccountType cannot be null or empty.");
     }
 
     [Fact]

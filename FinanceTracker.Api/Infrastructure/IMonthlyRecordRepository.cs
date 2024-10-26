@@ -2,7 +2,7 @@
 
 public interface IMonthlyRecordRepository
 {
-    // Task<MonthlyRecord> GetByIdAsync(int id);
+    Task<MonthlyRecord> GetByIdAsync(Guid id);
     // Task<IEnumerable<MonthlyRecord>> GetAllAsync();
     Task AddAsync(MonthlyRecord monthlyRecord);
     // Task UpdateAsync(MonthlyRecord monthlyRecord);

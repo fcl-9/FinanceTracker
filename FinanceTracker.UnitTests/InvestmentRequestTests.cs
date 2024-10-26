@@ -1,10 +1,8 @@
-﻿using Xunit;
-using FluentValidation.TestHelper;
-using System;
-using FinanceTracker.Api.Model;
+﻿using FinanceTracker.Api.Model;
 using FinanceTracker.Controllers;
+using FluentValidation.TestHelper;
 
-namespace FinanceTracker.Tests
+namespace FinanceTracker.UnitTests
 {
     public class InvestmentRequestValidatorTests
     {
