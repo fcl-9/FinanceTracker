@@ -23,7 +23,7 @@ echo 'Clean Project'
 dotnet Clean
 
 echo 'Format Code'
-dotnet format
+dotnet format --verify-no-changes
 
 echo 'Building code'
 dotnet build
