@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finance-tracker-api
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: finance-tracker-api
+  template:
+    metadata:
+      labels:
+        app: finance-tracker-api
+    spec:
+      containers:
+      - image: ghcr.io/fcl-9/finance-tracker-api:sha256-01cd549049f7a41731c84a53b90a52c6cebac820a660c53e45d4119aae465e8f
+        name: finance-tracker-api
+        ports:
+        - containerPort: 80
